@@ -1,0 +1,4 @@
+
+<!--Autogenerado-->
+
+<? require("encabezado.php"); ?>
