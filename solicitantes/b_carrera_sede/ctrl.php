@@ -22,8 +22,8 @@ $n_url="../solicitud_detalles/solicitud_detalles.php";
                                         <b>Error!</b> Debe indicar usuario
                                     </div>';
 /////////////encabezado resultado busqueda grid/////////////////
-      $ng_nro_solicitud='N&uacute;mero de Solicitud';
-      $ng_fecha='Fecha';
+      $ng_nro_solicitud='nro_solicitud';
+      $ng_fecha='fecha';
       $ng_user_id='user_id';
 /////////////encabezado resultado busqueda grid/////////////////
 
@@ -175,32 +175,23 @@ function c_busqueda($aFormValues,$order)
 
 if($_SESSION["seleccionar"])
      {
-                    $this->modelo->setid($aFormValues['id']);
-          $this->modelo->setnro_solicitud($aFormValues['nro_solicitud']);
-          $this->modelo->setfecha($aFormValues['fecha']);
-          $this->modelo->setuser_id($aFormValues['user_id']);
+
+      // $this->objResponse->alert($_SESSION['ced_user']);
+                  
 
          $this->modelo->setorder($order);
 
  $result=new Rs($this->modelo->busqueda());
          $str="
-<thead><tr bgcolor='white' ><th width='5%'>#</th> <th onclick=\"xajax_ctrl.c_order(xajax.getFormValues('form'),'nro_solicitud')\"    >$ng_nro_solicitud<img id='imnro_solicitud'></th> <th onclick=\"xajax_ctrl.c_order(xajax.getFormValues('form'),'fecha')\"    >$ng_fecha<img id='imfecha'></th><th>Estado</th></tr></thead>";
+<thead><tr bgcolor='white' ><th>Carrera</th></tr></thead>";
          $i=0;
       $str.="<tbody>";   
      while($result->Registros())
          {
-         $estatus=$result->getCampo('estatus');
-         
-         if ($estatus==0) 
-         {
-            $estatus="Elaborando Solicitud";
-         }
-          if ($estatus==1) 
-         {
-            $estatus="Solicitud efectuada, esperando pago";
-         }
            $i++;
-     $str.="<tr ><td>".$i."</td> <td  >".$result->getCampo('nro_solicitud')."</td> <td  >".$result->getCampo('fecha')."</td> <td  >".$estatus."</td> <td width='5%' onclick='xajax_ctrl.c_ver(".$result->getCampo('id').");' ><i class='fa fa-search'></i></td><td width='5%' onclick='xajax_ctrl.c_imprimir(".$result->getCampo('id').");' ><i class='fa fa-print'></i></td><td width='5%' onclick='xajax_ctrl.c_pagar(".$result->getCampo('id').");' ><i class='fa fa-money'></i></td></tr>";
+
+           $carrera_sede=$result->getCampo('cod_carrera')."-".$result->getCampo('carrera')."  ".$result->getCampo('cod_sede')."-".$result->getCampo('sede');
+     $str.="<tr ><td  ><h3>".strtoupper($carrera_sede)."</h3></td><td width='5%' onclick='xajax_ctrl.c_ver(".$result->getCampo('id').");' ><i class='fa fa-mail-forward'></i></td></tr>";
          }
      $str.="</tbody>";    $this->objResponse->assign("mensaje","innerHTML","<div class='table-responsive'><table class='table table-striped table-bordered table-hover' border='0' width='100%' >$str</table></div>");
        if ((substr($_SESSION['order'], -3, 3))=='asc')
@@ -252,16 +243,16 @@ permitida...");
    
 }
 
-    function c_ver($id)
-   {
-              
-                $_SESSION['id_solicitud_arancel']=$id;
-                 $this->objResponse->redirect("../solicitud_arancel_detalles/solicitud_arancel_detalles.php",0);
+   function c_ver ($id){
+
+
+$_SESSION['id_carrera_sedes']=$id;
+         $this->objResponse->redirect("../solicitud_arancel/solicitud_arancel.php",0);
 
          
                return $this->objResponse;
-   }
 
+   }
   
 
    function c_eliminar($id)
@@ -360,16 +351,7 @@ $_SESSION['id_solicitud_arancel']=$id;
                return $this->objResponse;
 
    }
-   function c_pagar ($id){
-
-
-$_SESSION['id_solicitud_arancel']=$id;
-         $this->objResponse->redirect("../pagos/pagos.php",2);
-
-         
-               return $this->objResponse;
-
-   }
+  
 
 }
 $xajax->register(XAJAX_CALLABLE_OBJECT,new ctrl());

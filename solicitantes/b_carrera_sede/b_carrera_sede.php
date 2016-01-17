@@ -1,6 +1,6 @@
 <?
    /**********configuraciones*************/
-     $titulo='B&uacute;squeda de solicitudes';
+     $titulo='Seleccione Carrera';
      $nombre_b_insertar='Nuevo';
 
 $nombre_b_buscar='Buscar';
@@ -69,26 +69,8 @@ if (resp)
 
 
 </div><table border="0"> 
-  <tr>
-  
-   <td><? echo $campo['nro_solicitud']='Nro de Solicitud'; ?></td>
-  
-   
-  </tr>
-  <tr>
-  
-   <td ><input id="nro_solicitud" class="form-control" name="nro_solicitud" type="text" size="20" maxlength="45" value="<? echo $_POST['nro_solicitud']?>" /></td>
-  
-  
-   
-  
-<td ><input id="buscar" type="button" name="buscar" class="btn btn-primary"  value="<? echo $nombre_b_buscar; ?>" onClick="xajax_ctrl.c_busqueda(xajax.getFormValues('form'),'');"></td>  </tr>
-  <tr>
-  <td colspan="1"><center><i class="fa fa-search"> Ver</i></center></td> 
-  <td colspan="2"><i class="fa fa-print"> Imprimir Arancel</i></td>
-  <td colspan="6"><center><i class="fa fa-money"> Registrar Pago</i></center></td>
-  </tr>
-  <tr>
+
+   <tr>
    <td colspan="4" align="center"><div id="mensaje" >&nbsp;</div></td>
   </tr>
    <tr>

@@ -51,6 +51,7 @@ class ctrl{
 			$_SESSION['id_grupos']=$result->getCampo('id_grupos');
 			$_SESSION['id_usuario']=$result->getCampo('id');
       $_SESSION['nombres']=$result->getCampo('nombres').' '.$result->getCampo('apellidos');
+      $_SESSION['ced_user']=$result->getCampo('cedula');
                $this->objResponse->assign("content","innerHTML","<div class='left'><table border='0' width='400' height='83'  ><tr  ><td  style='color:#D0D0D0' align='left'  >&nbsp;<h3>Bienvenido</h3><br/><h3>&nbsp;&nbsp;&nbsp;".$result->getCampo('nombres')."<br/>&nbsp;&nbsp;&nbsp;".$result->getCampo('apellidos')."</h3></td></tr></table></div>");
 			  $this->objResponse->redirect("$n_url",0);
             }

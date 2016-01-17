@@ -8,7 +8,7 @@
                             </a>
  <ul class="treeview-menu">
  
-<li><a href="../solicitud_arancel/solicitud_arancel.php" ><i class="fa fa-angle-double-right"></i>Realizar Solicitud</a></li>
+<li><a href="../b_carrera_sede/b_carrera_sede.php" ><i class="fa fa-angle-double-right"></i>Realizar Solicitud</a></li>
 <li><a href="../b_solicitud_arancel/solicitud_arancel_buscar.php" ><i class="fa fa-angle-double-right"></i>Historial</a></li>
 
 <li><a href="../citas/citas.php" ><i class="fa fa-angle-double-right"></i>Citas</a></li>
