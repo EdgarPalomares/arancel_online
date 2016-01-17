@@ -32,7 +32,7 @@ class mod extends Conexion{
           $result=new Rs($this->buscar());
           if (($result->getRowCount())==0)
           {
-               $this->Ejecutar("insert into solicitud_arancel(nro_solicitud,fecha,user_id) values('".$this->getnro_solicitud()."','".date('Y-m-d g:i:s')."','".$this->getuser_id()."');");
+               $this->Ejecutar("insert into solicitud_arancel(nro_solicitud,fecha,user_id,id_carrera_sedes,estatus) values('".$this->getnro_solicitud()."','".date('Y-m-d g:i:s')."','".$this->getuser_id()."',".$_SESSION['id_carrera_sedes'].",0);");
                $this->Ejecutar("update correlativos set nro_solicitud=".$this->getcorrelativo());
                
 

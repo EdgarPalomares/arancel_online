@@ -193,6 +193,16 @@ if($_SESSION["seleccionar"])
            $carrera_sede=$result->getCampo('cod_carrera')."-".$result->getCampo('carrera')."  ".$result->getCampo('cod_sede')."-".$result->getCampo('sede');
      $str.="<tr ><td  ><h3>".strtoupper($carrera_sede)."</h3></td><td width='5%' onclick='xajax_ctrl.c_ver(".$result->getCampo('id').");' ><i class='fa fa-mail-forward'></i></td></tr>";
          }
+
+         if ($i==1)
+         {
+          $id=$result->getCampo('id');
+
+          $_SESSION['id_carrera_sedes']=$id;
+         $this->objResponse->redirect("../solicitud_arancel/solicitud_arancel.php",0);
+
+
+         }
      $str.="</tbody>";    $this->objResponse->assign("mensaje","innerHTML","<div class='table-responsive'><table class='table table-striped table-bordered table-hover' border='0' width='100%' >$str</table></div>");
        if ((substr($_SESSION['order'], -3, 3))=='asc')
      {
