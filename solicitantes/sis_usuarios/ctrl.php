@@ -299,6 +299,39 @@ function restablecer($aFormValues)
 
  ;      }
 }
+function c_ver($id)
+   {
+               $this->c_f_ver($id);
+              $this->objResponse->assign("form","action","usuarios_v.php");
+
+          $this->objResponse->script("document.form.submit();");
+               return $this->objResponse;
+   }
+      function c_f_ver($id)
+   {
+      $this->modelo->setid($id);
+
+      $result=new Rs($this->modelo->buscar_vst());
+      if($result->Registros())
+      {
+
+  
+      $this->objResponse->assign("mensaje","innerHTML","<input type='hidden' name='id' value='".$result->getCampo('id')."'/>
+<input type='hidden' name='usuario' value='".$result->getCampo('usuario')."'/>
+");
+
+     return $this->objResponse;
+     }
+
+   
+}
+
+
+function buscar_carrera(){
+
+
+  
+}
 $xajax->register(XAJAX_CALLABLE_OBJECT,new ctrl());
 $xajax->processRequest();
 ?>

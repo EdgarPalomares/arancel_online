@@ -86,6 +86,12 @@ class mod extends Conexion{
           return $boolean;
       }
 
+       function maxid()
+     {
+          $result=$this->EjecutarSql("select max(id) as id from pagos  ;");
+          return $result;
+}
+
      function buscarid()
      {
           $result=$this->EjecutarSql("select * from pagos  where id=".$this->getid().";");

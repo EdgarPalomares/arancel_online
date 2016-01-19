@@ -97,7 +97,7 @@ class mod extends Conexion{
 
      function busqueda()
      {
-          $result=$this->EjecutarSql("select * from (select `solicitud_arancel`.`id` AS `id`,`solicitud_arancel`.`nro_solicitud` AS `nro_solicitud`,`solicitud_arancel`.`fecha` AS `fecha`,`solicitud_arancel`.`user_id` AS `user_id`,solicitud_arancel.estatus from `solicitud_arancel`) as bg where  user_id=".$_SESSION['id_usuario']." and (bg.nro_solicitud like '%".$this->getnro_solicitud()."%'  ) order by fecha desc;");
+          $result=$this->EjecutarSql("select * from (select `solicitud_arancel`.`id` AS `id`,`solicitud_arancel`.`nro_solicitud` AS `nro_solicitud`,`solicitud_arancel`.`fecha` AS `fecha`,`solicitud_arancel`.`user_id` AS `user_id` from `solicitud_arancel`) as bg where  user_id=".$_SESSION['id_usuario']." and (bg.nro_solicitud like '%".$this->getnro_solicitud()."%'  and  bg.fecha like '%".$this->getfecha()."%'  ".$this->getorder()." );");
      return $result;
 }
 

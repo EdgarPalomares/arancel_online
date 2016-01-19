@@ -95,6 +95,11 @@ class mod extends Conexion{
           $result=$this->EjecutarSql("select * from sis_usuarios  where id=".$this->getid().";");
      return $result;
 }
+function buscar_carrera()
+     {
+          $result=$this->EjecutarSql("select * from sis_usuarios  where id=".$this->getid().";");
+     return $result;
+}
 
      function busqueda()
      {
@@ -107,6 +112,11 @@ class mod extends Conexion{
      {
           $result=$this->EjecutarSql("select * from (select `sis_usuarios`.`id` AS `id`,`sis_usuarios`.`login` AS `login` from `sis_usuarios`
 ) as sisv_b_i_usuarios  where  login='".$this->getlogin()."';");
+     return $result;
+     }
+     function buscar_vst()
+     {
+          $result=$this->EjecutarSql("select * from (select `sis_usuarios`.`id` AS `id`,`sis_usuarios`.`apellidos` AS `apellidos`,`sis_usuarios`.`nombres` AS `nombres`,`sis_usuarios`.`cedula` AS `cedula`,`sis_usuarios`.`login` AS `login`,`sis_usuarios`.`telefono` AS `telefono`,`sis_grupos`.`nombre` AS `nombre` from (`sis_usuarios` join `sis_grupos` on((`sis_usuarios`.`id_grupos` = `sis_grupos`.`id`)))) as sisv_bg_usuarios  where id=1=".$this->getid()."; ;");
      return $result;
      }
 

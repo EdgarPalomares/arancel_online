@@ -88,16 +88,11 @@ class ctrl{
    function validaciones($aFormValues)
    {
            $bError =1;
-           global $n_id_solicitud_arancel;
+           
       global $n_id_bancos;
       global $n_monto;
       global $n_nro_deposito;
-           if ((trim($aFormValues['id_solicitud_arancel']) == "") and ($bError ==1))
-         {
-            $this->objResponse->assign("mensaje","innerHTML",$n_id_solicitud_arancel);
-            $this->limpiarmensaje();
-            $bError = 0;
-         }
+         
 
       if ((trim($aFormValues['id_bancos']) == "") and ($bError ==1))
          {
@@ -124,9 +119,15 @@ class ctrl{
    }
    function guardarformulario($aFormValues)
    {
-      $msg_insertado='Almacenado con Exito';
+      $msg_insertado='<div class="alert alert-success alert-dismissable">
+                                        <i class="fa fa-ban"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        <b>¡Excelente!</b> Pago Registrado
+                                    </div>';
       $msg_registro_existente='El registro ya existe';
       $msg_actualizado='Actualizado con Exito';
+
+
       if($this->validaciones($aFormValues))
       {
           $this->modelo->setid($aFormValues['id']);
@@ -141,6 +142,21 @@ class ctrl{
                if($this->modelo->insertar())
                  {
                     $this->objResponse->assign("mensaje","innerHTML",$msg_insertado);
+
+                    //maxid
+
+
+                     $result=new Rs($this->modelo->maxid());
+
+                      if($result->Registros())
+                 {
+
+                    $id_pago=$result->getCampo('id');
+
+                    }
+                      //coloca la direccion del reporte abajo
+                    $this->objResponse->redirect("../../lib/tcpdf/reportes/detalle_pago.php?id=$id_pago",0);
+
                     $this->limpiarformulario();
                     $this->limpiarmensaje();
                  }
@@ -179,6 +195,8 @@ class ctrl{
              }
           }
        }
+       
+       //$this->objResponse->redirect("../../lib/tcpdf/reportes/example_039.php?id=id",0);
       return $this->objResponse;
    }
 

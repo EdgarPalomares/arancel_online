@@ -46,7 +46,7 @@ if (resp)
 <!--Autogenerado-->
 
 
- <div class="col-lg-12">
+ <div class="col-md-7">
 
     <div class="box box-primary">
 

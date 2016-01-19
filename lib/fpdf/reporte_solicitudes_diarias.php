@@ -77,16 +77,24 @@ where t1.fecha between '$fecha' and '$fecha1' order by t1.fecha ASC ";
 
 
 $pdf->SetFont('Arial','B',16);
-$pdf->Cell(200,4,'Solicitudes Diarias','',0,'C');
+$pdf->Cell(0,10,'Solicitudes Diarias',1,1,'C');
  $pdf->Ln(10);
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(30,6,'Solicitud','TRLB',0,'C');
-$pdf->SetFont('Arial','B',10);
-$pdf->Cell(45,6,'Tipo de Solicitud','TRLB',0,'C');
-$pdf->SetFont('Arial','B',10);
-$pdf->Cell(45,6,'Fecha','TRLB',0,'C');
-$pdf->SetFont('Arial','B',10);
-$pdf->Cell(40,6,'Cantidad','TRLB',0,'C');
+$pdf->Cell(30,10,'Solicitud Nro:',1,0);
+$pdf->Cell(50,10,'7894',1,1);
+ $pdf->Ln(10);
+$pdf->Cell(50,10,'Solicitante:',1,0);
+$pdf->Cell(50,10,'gina maria da silva',1,1);
+$pdf->Cell(50,10,'Aranceles:',1,0);
+$pdf->Cell(60,10,'gina maria da silva',1,1);
+$pdf->Cell(60,10,'gina maria da silva',1,0);
+$pdf->Cell(60,10,'gina maria da silva',1,1);
+$pdf->Cell(60,10,'gina maria da silva',1,0);
+$pdf->Cell(60,10,'gina maria da silva',1,1);
+$pdf->Cell(60,10,'gina maria da silva',1,0);
+
+
+
 
 
 
