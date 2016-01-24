@@ -1,0 +1,10 @@
+select solicitud_arancel.`solicitud_arancel_detalles`.`id` AS `id`,`solicitud_arancel`.id as id_solicitud_arancel, `solicitud_arancel`.`nro_solicitud` AS `nro_solicitud`,`solicitud_arancel`.`fecha` AS `fecha`,`solicitud_arancel`.`user_id` AS `user_id`,`arancel`.`nombre` AS `nombre`,`arancel`.`monto` AS `monto`,`arancel`.`max` AS `max`,`solicitud_arancel_detalles`.`cantidad` AS `cantidad`, sis_usuarios.cedula, sis_usuarios.apellidos,sis_usuarios.nombres from `solicitud_arancel_detalles` inner join `solicitud_arancel` on`solicitud_arancel`.`id` = `solicitud_arancel_detalles`.`id_solicitud_arancel` inner join `arancel` on`arancel`.`id` = `solicitud_arancel_detalles`.`id_arancel` inner join sis_usuarios on sis_usuarios.id=solicitud_arancel.user_id
+
+----------------
+para agregar documento impreso al lote
+
+SELECT  `solicitud_arancel_detalles`.`id` AS  `id` ,  `solicitud_arancel`.id AS id_solicitud_arancel,  `solicitud_arancel`.`nro_solicitud` AS  `nro_solicitud` ,  `solicitud_arancel`.`fecha` AS  `fecha` ,  `solicitud_arancel`.`user_id` AS  `user_id` ,  `arancel`.`nombre` AS  `nombre` ,  `arancel`.`monto` AS  `monto` ,  `arancel`.`max` AS  `max` ,  `solicitud_arancel_detalles`.`cantidad` AS `cantidad` , sis_usuarios.cedula, sis_usuarios.apellidos, sis_usuarios.nombres
+FROM  `solicitud_arancel_detalles` 
+INNER JOIN  `solicitud_arancel` ON  `solicitud_arancel`.`id` =  `solicitud_arancel_detalles`.`id_solicitud_arancel` 
+INNER JOIN  `arancel` ON  `arancel`.`id` =  `solicitud_arancel_detalles`.`id_arancel` 
+INNER JOIN sis_usuarios ON sis_usuarios.id = solicitud_arancel.user_id
